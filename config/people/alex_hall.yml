@@ -1,19 +1,19 @@
 groups:
-    - developer
+    - pm
 recipes:
     mac_os_x:
         - osxdefaults::set_computer_name
+        # - osxdefaults::set_microsoft_office_key
 attributes:
 	git:
-		name: Jason Leibowitz
-		email: jason.leibowitz@tigerspike.com
+		name: Alex Hall
+		email: alex.hall@tigerspike.com
     osxdefaults:
-        computername: NYC00125
+        computername: NYC00142
+        # microsoft_office_license_key: 6300977D-B1F7-4651-BFA3-AF44820BDCDE
     homebrewalt:
         apps:
-            - git-extras
         cask_apps:
-            - sourcetree
     authorization:
     	sudo:
     		users:

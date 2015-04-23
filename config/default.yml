@@ -1,17 +1,53 @@
-recipes:                                       # Configs are parsed and every list is appended to each other, chef handles order and de-duplication
-    global:                                    # Recipes mentioned under "global" are installed for all operating systems (we used to support linux, and may do so in the future)
+# Configs are parsed and every list is appended to each other, chef handles order and de-duplication
+recipes:
+    # Recipes mentioned under "global" are installed for all operating systems (we used to support linux, and may do so in the future)
+    global:
         - applications::create_var_chef_cache
-    mac_os_x:                                  # Recipes mentioned under "mac_os_x" are installed on OSX and OSX Server
-        - homebrewalt::default                 # Installs homebrew and homebrew cask and installs all apps mentioned in the homebrewalt:apps and homebrewalt:cask_apps attributes
-        - nodejs::default                      # Installs nodejs and installs all nodejs packages mentioned in the nodejs:apps attribute
+    # Recipes mentioned under "mac_os_x" are installed on OSX and OSX Server
+    mac_os_x:
+        # Installs homebrew and homebrew cask and installs all apps mentioned in the homebrewalt:apps and homebrewalt:cask_apps attributes
+        - homebrewalt::default
+        # To Do: Clone repo and add Canon 5030. https://github.com/kitchenplan/chef-drivers. - JL
+        # - drivers::Canon5030
+        - osxdefaults::automatically_quit_printer_app_once_the_print_jobs_complete
+        - osxdefault::avoid_creating_ds_store_files_on_network_volumes
+        - osxdefault::save_screenshots_in_png_format
+        - osxdefault::save_screenshots_to_the_desktop
+        - osxdefault::disable_disk_image_verification
+        - osxdefault::displays_do_not_have_separate_spaces
+        - osxdefault::dock_wipe_all_default_app_icons_from_dock
+        - osxdefault::enable_remote_login
+        - osxdefault::expand_print_panel_by_default
+        - osxdefault::expand_save_panel_by_default
+        - osxdefault::finder_allow_text_selection_in_quick_look
+        - osxdefault::finder_disable_the_warning_when_changing_a_file_extension
+        - osxdefault::finder_display_full_path
+        - osxdefault::finder_new_finder_windows_shows_homefolder
+        - osxdefault::finder_search_the_current_folder_by_default
+        - osxdefault::finder_show_path_bar
+        - osxdefault::finder_show_status_bar
+        - osxdefault::finder_use_list_view_in_all_finder_windows_by_default
+        - osxdefault::menu_add_battery_percentage
+        - osxdefault::prevent_time_machine_from_prompting_to_use_new_hard_drives_as_backup_volume
+        - osxdefault::save_to_disk_not_to_iCloud_by_default
+        - osxdefault::set_desktop_picture
+        - osxdefault::set_screensaver_preferences
+        - osxdefault::use_name_and_password_on_loginscreen
+        - osxdefault::set_apperance_color_to_graphite
+        - osxdefault::turn_on_firewall
+        - osxdefault::enable_tap_to_click
 attributes:
+	# drivers:
+		# canon: 192.16.1.20
     homebrewalt:
         apps:
             - git
         cask_apps:
             - google-chrome
-        cask_fonts:   
-            - inconsolata
-    nodejs:
-        apps:
-            - bower
+            - google-hangouts
+            - google-drive
+            - microsoft-office
+            - clamxav
+            - alfred
+    osxdefaults:
+    	desktop_picture: http://internal.tigerspike.com/archive/automate/background.png

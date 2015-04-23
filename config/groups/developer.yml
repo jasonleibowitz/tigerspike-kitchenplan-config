@@ -1,0 +1,33 @@
+groups:
+    - groupb
+recipes:
+    mac_os_x:
+        - osxdefaults::set_terminal_profile
+        - osxdefaults::enable_safari_debug_menu
+        - osxdefaults::disable_press-and-hold_for_keys_in_favor_of_key_repeat
+        - osxdefaults::set_a_blazingly_fast_keyboard_repeat_rate
+        - osxdefaults::add_a_context_menu_item_for_showing_the_web_inspector_in_web_views
+        - applications::sublime_text_3
+		- applications::sass
+        - applications::ssh_config
+        - applications::postgresql
+        - applications::mysql
+        - applications::sublime_text_3
+        # Installs nodejs and installs all nodejs packages mentioned in the nodejs:apps attribute
+        - nodejs::default
+    	- dotfiles::gitconfig
+        - dotfiles::sshconfig
+        - dotfiles::workspace
+attributes:
+    homebrewalt:
+        apps:
+            - git-extras
+            - watch
+        cask_apps:
+            - sourcetree
+            - imageoptim
+    nodejs:
+        apps:
+            - bower
+            - grunt
+            - grunt cli
